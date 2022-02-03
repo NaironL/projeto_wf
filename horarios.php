@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 
     <!-- Google Fonts -->
@@ -37,7 +37,7 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-        <a href="index.php"><img src="assets/logo.png" width="150px"></a>
+        <a href="index.php"><img src="assets/img/logo.png" width="150px"></a>
 
 
         <nav id="navbar" class="navbar order-last order-lg-0">

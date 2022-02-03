@@ -1,6 +1,8 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -10,13 +12,23 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
-    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- popup scripts -->
+
+  <!-- Slick Scripts -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"/>
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,24 +49,44 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      <a href="index.php"><img src="assets/logo.png" width="150px"></a>
+      <a href="#hero"><img src="assets/img/logo.png" width="150px"></a>
 
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
           <li><a class="nav-link scrollto" href="#about">Conheça-me</a></li>
-          <li><a class="nav-link scrollto" href="#galeria">Galeria de Alunos</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Galeria de Alunos</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#register" class="get-started-btn">Vamos lá!!</a>
-
+        <?php if (isset($_SESSION['autenticado']) != 'sim') { ?>
+        <a href="src/login.php" class="get-started-btn">Entrar</a>
+        <?php } ?>
+            <?php
+        if (isset($_GET['autenticado']) == 'sim') {
+            ?>
+                <button class="btn get-started-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php echo $_SESSION['user_name']?>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Adicionar Imagem</a></li>
+                    <li><a class="dropdown-item" href="#">Editar Agenda</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="src/logout.php">Sair</a></li>
+                </ul>
+            </div>
+              <div style="width: 324px; display: inline-block; margin-left: 1000px; font-size: 13.5px" class="alert alert-info alert-dismissible fade show" role="alert">
+                 Olá professor <strong><?php echo $_SESSION['user_name'] ?></strong>. Seja bem-vindo.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+        <?php } ?>
     </div>
+  </header>
 
-  </header><!-- Fim do Topo -->
+    <!-- Fim do Topo -->
 
   <!-- ======= Menu principal ======= -->
   <section id="hero" style="  background: url(assets/img/bg-wf.png) top center;
@@ -106,7 +138,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/about.jpeg" class="img-fluid" alt="">
+            <img src="assets/img/about.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
             <h3>Um pouquinho sobre mim.</h3>
@@ -187,8 +219,57 @@
           </div>
       </section>
       <!-- Fim Planos -->
+    <!-- Início Galeria de alunos -->
+      <section id="portfolio" class="portfolio">
+          <div class="container" data-aos="fade-up">
 
-    <!-- ======= Contact Section ======= -->
+              <div class="section-title">
+                  <h2 style="color: #000">Galeria</h2>
+                  <p style="color: #ffffff">Alguns alunos.</p>
+              </div>
+              <div class="gallery-container">
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
+                  </a>
+                  <a href="#" class="gallery-items">
+                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
+                  </a>
+              </div>
+          </div>
+          <script type="text/javascript">
+              $('.gallery-container').slick({
+                  infinite: true,
+                  speed: 500,
+                  slidesToShow: 4,
+                  slidesToScroll: 3,
+              });
+          </script>
+      </section>
+
+
+      <!-- Fim Galeria de Alunos -->
+    <!-- ======= Sessão contato ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
@@ -329,7 +410,6 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
