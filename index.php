@@ -68,11 +68,39 @@
             <?php
         if (isset($_GET['autenticado']) == 'sim') {
             ?>
-                <button class="btn get-started-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="btn get-started-btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php echo $_SESSION['user_name']?>
-                </button>
+                </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Adicionar Imagem</a></li>
+
+                    <li><!-- Button trigger modal -->
+                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Adicionar imagem
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Fazer upload de imagem</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="src/upload.php">
+                                            <input type="file" class="input-group">
+                                            Importar imagem
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-primary">Salvar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     <li><a class="dropdown-item" href="#">Editar Agenda</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="src/logout.php">Sair</a></li>
