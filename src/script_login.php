@@ -30,16 +30,16 @@ $usuarios = [
         }
     }
     if($usuarioAutenticado && $usuarioAdmin){
-        header('Location: ../index.php?autenticado=sim');
-        $_SESSION['autenticado'] = 'sim';
+        header('Location: ../index.php');
+        $_SESSION['user_name'];
 
     } elseif ($usuarioAutenticado) {
-        header("Location: ../index.php?autenticado=sim");
-        $_SESSION['autenticado'] = 'sim';
+        header("Location: ../index.php");
+        $_SESSION['user_name'];
 
     }
 
 else {
-    $_SESSION['autenticado'] = 'nao';
+    unset ($_SESSION['user_name']);
     header('Location: login.php?login=erro');
 }

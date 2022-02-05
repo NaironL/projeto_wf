@@ -25,7 +25,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- popup scripts -->
-
+    <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+   
   <!-- Slick Scripts -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"/>
@@ -61,45 +62,24 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-        <?php if (isset($_SESSION['autenticado']) != 'sim') { ?>
+      
+      
+      
+        <?php if (isset($_SESSION['user_name']) != true) { ?>
         <a href="src/login.php" class="get-started-btn">Entrar</a>
         <?php } ?>
             <?php
-        if (isset($_GET['autenticado']) == 'sim') {
+        if (isset($_SESSION['user_name'])) {
             ?>
+            
                 <a class="btn get-started-btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php echo $_SESSION['user_name']?>
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-
-                    <li><!-- Button trigger modal -->
-                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Adicionar imagem
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Fazer upload de imagem</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="src/upload.php">
-                                            <input type="file" class="input-group">
-                                            Importar imagem
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                        <button type="button" class="btn btn-primary">Salvar</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li>
+                      <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Importar imagem
+                      </button>
                     </li>
                     <li><a class="dropdown-item" href="#">Editar Agenda</a></li>
                     <li><hr class="dropdown-divider"></li>
@@ -111,6 +91,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
         <?php } ?>
+        
     </div>
   </header>
 
@@ -426,6 +407,7 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+  
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -441,6 +423,28 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+          <!-- Modal De importação -->
+        <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Importar imagens</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                  <form action="src/upload.php" method="POST" enctype="multipart/form-data"> 
+                    <label for="conteudo">Enviar imagem:</label>
+                    <input type="file" name="pic" accept="image/*">    
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+      <!-- Fim do modal de Importação -->
 </body>
 
 </html>
