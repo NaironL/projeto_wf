@@ -23,7 +23,8 @@
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <!-- Tabela de Preços -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <!-- popup scripts -->
     <script type="text/javascript" src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
    
@@ -31,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick-theme.css"/>
   <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="assets/css/planos.css">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -57,7 +59,9 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Início</a></li>
           <li><a class="nav-link scrollto" href="#about">Conheça-me</a></li>
+          <li><a class="nav-link scrollto" href="#planos">Planos</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Galeria de Alunos</a></li>
+          <li><a class="nav-link scrollto" href="#horarios">Horarios</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -71,10 +75,11 @@
             <?php
         if (isset($_SESSION['user_name'])) {
             ?>
-            
+
                 <a class="btn get-started-btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php echo $_SESSION['user_name']?>
                 </a>
+
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li>
                       <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -85,13 +90,9 @@
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="src/logout.php">Sair</a></li>
                 </ul>
+
             </div>
-              <div style="width: 324px; display: inline-block; margin-left: 1000px; font-size: 13.5px" class="alert alert-info alert-dismissible fade show" role="alert">
-                 Olá professor <strong><?php echo $_SESSION['user_name'] ?></strong>. Seja bem-vindo.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
         <?php } ?>
-        
     </div>
   </header>
 
@@ -100,6 +101,7 @@
   <!-- ======= Menu principal ======= -->
   <section id="hero" style="  background: url(assets/img/bg-wf.png) top center;
   background-size: cover;" class="d-flex align-items-center justify-content-center">
+
     <div class="container" data-aos="fade-up">
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
@@ -108,32 +110,13 @@
           <h2>Agende seu horário. e vamos juntos começar já essa evolução</h2>
         </div>
       </div>
-
-      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
-        <div class="col-xl-2 col-md-4">
-          <div class="icon-box">
-            <i class="ri-calendar-todo-line"></i>
-            <h3><a href="horarios.php">Horários Disponíveis</a></h3>
-          </div>
-        </div>
-        <div class="col-xl-2 col-md-4">
-          <div class="icon-box">
-            <i class="ri-calendar-todo-line"></i>
-            <h3><a href="">Forma de Trabalho</a></h3>
-          </div>
-        </div>
-        <div class="col-xl-2 col-md-4">
-          <div class="icon-box">
-            <i class="ri-database-2-line"></i>
-            <h3><a class="scrollto" href="#planos">Valores e Descontos</a></h3>
-          </div>
-        </div>
-        <div class="col-xl-2 col-md-4">
-          <div class="icon-box">
-            <i class="ri-bar-chart-box-line"></i>
-            <h3><a href="">Resultados Obtidos</a></h3>
-          </div>
-        </div>
+        <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+            <div class="col-xl-2 col-md-4">
+                <a href="#planos"><div class="icon-box">
+                    <a href="#planos"><i class="bi-play-circle"  style="width: 200px"></i></a>
+                    <h3><a href="#planos">Vamos lá</a></h3>
+                </div>
+            </div>
       </div>
 
     </div>
@@ -147,7 +130,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="assets/img/about.jpeg" class="img-fluid" alt="">
+            <img src="assets/img/about.jpeg" class="img-fluid" alt="" style="margin-left: 120px; margin-top: -60px">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
             <h3>Um pouquinho sobre mim.</h3>
@@ -166,66 +149,86 @@
 
       <!-- ======= Planos ======= -->
 
-      <section id="planos" class="d-flex align-items-center justify-content-center">
-          <div class="container" data-aos="fade-up">
+      <section id="planos" class="d-flex align-items-center justify-content-center" style="margin-top: -60px;">
+          <div class="container-fluid">
+              <div class="container p-5">
+                  <div class="section-title justify-content-center">
+                      <h2 style="color: #000; text-align: left">Planos</h2>
+                      <p style="color: #ffffff; text-align: left">Selecione seu plano</p>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-4 col-md-12 mb-4">
+                          <div class="card card1 h-100">
+                              <div class="card-body">
 
-              <div class="row">
+                                  <h5 class="card-title">Prata</h5>
+                                  <small class='text-muted'>Mensal</small>
+                                  <br><br>
+                                  <span class="h2">$59,90</span>/mês
+                                  <br><br>
+                                  <div class="d-grid my-3">
+                                      <button class="btn btn-outline-dark btn-block">Vamos lá!</button>
+                                  </div>
+                                  <ul class="planos-list">
+                                      <li>Aulas Semanais</li>
+                                      <li>Avaliação mensal</li>
+                                      <li>Suporte WhatsApp</li>
 
-                  <div class="row justify-content-center" data-aos="fade-right" data-aos-delay="100">
-                      <div>
-                      <h1 style="margin-top: -50px" >Conheça os Planos.</h1>
+                                  </ul>
+                              </div>
+
+
+                          </div>
                       </div>
-                      <table class="table table-dark table-striped">
-                          <thead>
-                          <tr>
-                              <th scope="col">Info</th>
-                              <th scope="col">Prata</th>
-                              <th scope="col">Ouro</th>
-                              <th scope="col">Diamante</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                              <td>Valor</td>
-                              <td>49,90</td>
-                              <td>69,90</td>
-                              <td>89,90</td>
-                          </tr>
-                          <tr>
-                              <td>Período</td>
-                              <td>1 Mês</td>
-                              <td>3 Meses</td>
-                              <td>6 Meses</td>
-                          </tr>
-                          <tr>
-                              <td>Aulas semanais</td>
-                              <td>Sim</td>
-                              <td>Sim</td>
-                              <td>Sim</td>
-                          </tr>
-                          <tr>
-                              <td>Avaliação Mensal</td>
-                              <td>Não</td>
-                              <td>Não</td>
-                              <td>Sim</td>
-                          </tr>
-                          <tr>
-                              <td>Desconto mensal</td>
-                              <td>Não</td>
-                              <td>Não</td>
-                              <td>Não</td>
-                          </tr>
-                          <tr>
-                              <td></td>
-                              <td><a href="#contratar-prata" class="btn btn-outline-info">Tenho interesse</a></td>
-                              <td><a href="#contratar-prata" class="btn btn-outline-info">Tenho interesse</a></td>
-                              <td><a href="#contratar-prata" class="btn btn-outline-info">Tenho interesse</a></td>
-                          </tr>
-                      </table>
+                      <div class="col-lg-4 col-md-12 mb-4">
+                          <div class="card card2 h-100">
+                              <div class="card-body">
+
+                                  <h5 class="card-title">Ouro</h5>
+                                  <small class='text-muted'>Trimestral</small>
+                                  <br><br>
+                                  <span class="h2">$179,90</span>/trimestre
+                                  <br><br>
+                                  <div class="d-grid my-3">
+                                      <button class="btn btn-outline-dark btn-block">Vamos lá!!</button>
+                                  </div>
+                                  <ul class="planos-list">
+                                      <li>Aulas Semanais</li>
+                                      <li>Avaliação mensal</li>
+                                      <li>Suporte WhatsApp</li>
+                                      <li>Treino Personalizado</li>
+
+                                  </ul>
+                              </div>
+
+
+                          </div>
+                      </div>
+                      <div class="col-lg-4 col-md-12 mb-4">
+                          <div class="card card3 h-100">
+                              <div class="card-body">
+
+                                  <h5 class="card-title">Diamante</h5>
+                                  <small class='text-muted'>Semestral</small>
+                                  <br><br>
+                                  <span class="h2">$599,90</span>/semestre
+                                  <br><br>
+                                  <div class="d-grid my-3">
+                                      <button class="btn btn-outline-dark btn-block">Vamos lá!!</button>
+                                  </div>
+                                  <ul class="planos-list">
+                                      <li>Aulas Semanais</li>
+                                      <li>Avaliação mensal</li>
+                                      <li>Suporte WhatsApp</li>
+                                      <li>Treino Personalizado</li>
+                                      <li>Desconto de 5% na mensalidade</li>
+
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
                   </div>
               </div>
-
-          </div>
       </section>
       <!-- Fim Planos -->
     <!-- Início Galeria de alunos -->
@@ -237,33 +240,17 @@
                   <p style="color: #ffffff">Alguns alunos.</p>
               </div>
               <div class="gallery-container">
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video2.gif" alt="aluno1">
-                  </a>
-                  <a href="#" class="gallery-items">
-                      <img src="assets/img/carrossel/video1.gif" alt="aluno1">
-                  </a>
+                  <?php
+                  $pasta = "assets/img/carrossel/";
+                  if (!is_dir($pasta))
+                      die("<h2>O caminho $pasta não existe</h2>");
+                  $arquivos = glob("$pasta{*.jpg,*.png,*.gif,*.bmp,*.JPG}", GLOB_BRACE);
+                  foreach ($arquivos as $img) {
+                      ?>
+                      <a class="gallery-items"  href="#portfolio">
+                          <img src="<?php echo $img; ?>"/>
+                      </a>
+                  <?php } ?>
               </div>
           </div>
           <script type="text/javascript">
@@ -274,10 +261,160 @@
                   slidesToScroll: 3,
               });
           </script>
+       </section>
+     <!-- Fim Galeria de Alunos -->
+      <!-- Início lista de horários -->
+
+      <section id="horarios">
+          <div class="container" data-aos="fade-up">
+              <div class="section-title justify-content-center">
+                  <h2 style="color: #000">Horários</h2>
+                  <p style="color: #fff">Confira os horários</p>
+              </div>
+              <table class="table table-bordered table-striped table-dark">
+                  <thead>
+                  <tr>
+                      <th scope="col" style="text-align: center">Dias</th>
+                      <th colspan="15" scope="col" style="text-align: center">Horas</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr style="text-align: center">
+                      <td>&spades;</td>
+                      <td>06:00</td>
+                      <td>07:00</td>
+                      <td>08:00</td>
+                      <td>09:00</td>
+                      <td>10:00</td>
+                      <td>11:00</td>
+                      <td>13:00</td>
+                      <td>14:00</td>
+                      <td>15:00</td>
+                      <td>16:00</td>
+                      <td>17:00</td>
+                      <td>18:00</td>
+                      <td>19:00</td>
+                      <td>20:00</td>
+                      <td>21:00</td>
+                  </tr>
+                  <tr style="text-align: center">
+                      <th scope="row">Segunda</th>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+
+                  </tr>
+                   <tr style="text-align: center">
+                      <th scope="row">Terça</th>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                  </tr>
+
+                  <tr style="text-align: center">
+                      <th scope="row">Quarta</th>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>>
+                  </tr>
+                  <tr style="text-align: center">
+                      <th scope="row">Quinta</th>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                  </tr>
+                  <tr style="text-align: center">
+                      <th scope="row">Sexta</th>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                  </tr>
+                  <tr style="text-align: center">
+                      <th scope="row">Sábado</th>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                  </tr>
+
+                  </tbody>
+              </table>
+          </div>
+
       </section>
 
-
-      <!-- Fim Galeria de Alunos -->
+      <!-- Fim da lista de horários -->
     <!-- ======= Sessão contato ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">

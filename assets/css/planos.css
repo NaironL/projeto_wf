@@ -1,0 +1,53 @@
+
+.card1:hover {
+    background:#00C9FF;
+    border:1px solid #00C9FF;
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+
+}
+
+.card1:hover .list-group-item{
+    background:#00C9FF !important
+}
+
+
+
+
+
+.card2:hover {
+    background:#00C9FF;
+    border:1px solid #00C9FF;
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+}
+
+.card2:hover .list-group-item{
+    background:#00C9FF !important
+
+}
+
+
+.card3:hover {
+    background:#00C9FF;
+    border:1px solid #00C9FF;
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.card3:hover .list-group-item{
+    background:#00C9FF !important
+}
+
+
+.card:hover .btn-outline-dark{
+    color:white;
+    background:#212529;
+}
+.planos-list {
+    list-style: none;
+}
+
+.planos-list li:before {
+    content: ' ✓';
+}
