@@ -66,19 +66,20 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      
+
       
       
         <?php if (isset($_SESSION['user_name']) != true) { ?>
         <a href="src/login.php" class="get-started-btn">Entrar</a>
         <?php } ?>
             <?php
-        if (isset($_SESSION['user_name'])) {
+                if (isset($_SESSION['user_name'])) {
             ?>
 
                 <a class="btn get-started-btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <?php echo $_SESSION['user_name']?>
                 </a>
+
 
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li>
@@ -86,13 +87,35 @@
                         Importar imagem
                       </button>
                     </li>
-                    <li><a class="dropdown-item" href="#">Editar Agenda</a></li>
+                    <li>
+                          <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#agendaStatic">
+                              Editar Agenda
+                          </button>
+                      </li></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="src/logout.php">Sair</a></li>
                 </ul>
-
             </div>
         <?php } ?>
+      <?php
+      if (isset($_SESSION['notice'])){
+      ?>
+
+      <div style="font-size:13px; width: 250px; margin-left: 1050px; margin-top: -10px"  class="alert alert-success d-flex align-items-center" id="success-alert" role="alert">
+          <?php echo $_SESSION['notice'] . ' '  . $_SESSION['user_name']; ?>
+      </div>
+
+      <script>
+          window.setTimeout(function() {
+              $(".alert").fadeTo(500, 150).slideUp(500, function(){
+                  $(this).remove();
+              });
+          }, 4000);
+      </script>
+      <?php
+        }
+        unset($_SESSION['notice']);
+      ?>
     </div>
   </header>
 
@@ -106,6 +129,7 @@
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
+
           <h1>Chegou a hora de realmente obter bons resultados<span>.</span></h1>
           <h2>Agende seu horário. e vamos juntos começar já essa evolução</h2>
         </div>
@@ -266,6 +290,16 @@
       <!-- Início lista de horários -->
 
       <section id="horarios">
+          <?php
+          $arquivo = fopen('src/horarios.wf', 'r');
+
+          while (!feof($arquivo)){
+
+              $registro = fgets($arquivo);
+              $horarios[] = $registro;
+          }
+          fclose($arquivo);
+          ?>
           <div class="container" data-aos="fade-up">
               <div class="section-title justify-content-center">
                   <h2 style="color: #000">Horários</h2>
@@ -279,135 +313,24 @@
                   </tr>
                   </thead>
                   <tbody>
+                  <?php
+                  foreach ($horarios as $hora){
+                      $horario_dados = explode('#', $hora);
+                      if (count($horario_dados) < 3){
+                          continue;
+                      }
+                      ?>
                   <tr style="text-align: center">
-                      <td>&spades;</td>
-                      <td>06:00</td>
-                      <td>07:00</td>
-                      <td>08:00</td>
-                      <td>09:00</td>
-                      <td>10:00</td>
-                      <td>11:00</td>
-                      <td>13:00</td>
-                      <td>14:00</td>
-                      <td>15:00</td>
-                      <td>16:00</td>
-                      <td>17:00</td>
-                      <td>18:00</td>
-                      <td>19:00</td>
-                      <td>20:00</td>
-                      <td>21:00</td>
+                      <td><?php echo $horario_dados[0]; ?></td>
+                      <td><?php echo $horario_dados[1]; ?></td>
+                      <th scope="row"></th>
+                      <?php if ($horario_dados[2] == 'vazio'){ ?>
+                        <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
+                      <?php } else{ ?>
+                      <td class="" style="width: 100px; height: 40px">Preenchido</a></td>
+                      <?php } ?>
                   </tr>
-                  <tr style="text-align: center">
-                      <th scope="row">Segunda</th>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-
-                  </tr>
-                   <tr style="text-align: center">
-                      <th scope="row">Terça</th>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                       <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                  </tr>
-
-                  <tr style="text-align: center">
-                      <th scope="row">Quarta</th>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>>
-                  </tr>
-                  <tr style="text-align: center">
-                      <th scope="row">Quinta</th>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                  </tr>
-                  <tr style="text-align: center">
-                      <th scope="row">Sexta</th>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                  </tr>
-                  <tr style="text-align: center">
-                      <th scope="row">Sábado</th>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                  </tr>
-
+                  <?php } ?>
                   </tbody>
               </table>
           </div>
@@ -574,14 +497,52 @@
                     <input type="file" name="pic" accept="image/*">    
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     <button type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
-      <!-- Fim do modal de Importação -->
+  <!-- Fim do modal de Importação -->
+  <!-- Modal de Agenda -->
+  <div class="modal" id="agendaStatic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Editar agenda</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <h6>Selecione o dia que deseja atualizar</h6>
+                  <form action="src/atualizar_agenda.php" method="POST" enctype="multipart/form-data">
+                      <select id="inputState" class="form-select" required name="dia">
+                          <option selected>Escolha...</option>
+                          <option>Segunda</option>
+                          <option>Terça</option>
+                          <option>Quarta</option>
+                          <option>Quinta</option>
+                          <option>Sexta</option>
+                          <option>Sábado</option>
+                      </select><br>
+                      <h6>Informe o Horário desejado</h6>
+                      <input class="form-control" type="text" name="horario" placeholder="Informe o horário no modelo (Hora:Minuto)">
+                      <hr>
+                      <input type="radio" id="preenchido" name="vaga" value="preenchido">
+                      <label for="preenchido">Preenchido</label><br>
+                      <input type="radio" id="vazio" name="vaga" value="vazio">
+                      <label for="vazio">Vazio</label><br>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+      <!-- Fim do modal de agenda -->
 </body>
 
 </html>

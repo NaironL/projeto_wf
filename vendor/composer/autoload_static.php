@@ -9,11 +9,16 @@ class ComposerStaticInitda03dfb1f020b35f93c1e9a38df88eb0
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
+            'Plasticbrain\\FlashMessages\\' => 27,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
+        ),
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
