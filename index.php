@@ -305,11 +305,12 @@
                   <h2 style="color: #000">Horários</h2>
                   <p style="color: #fff">Confira os horários</p>
               </div>
-              <table class="table table-bordered table-striped table-dark">
+              <div class="horarios">
+              <table>
                   <thead>
                   <tr>
-                      <th scope="col" style="text-align: center">Dias</th>
-                      <th colspan="15" scope="col" style="text-align: center">Horas</th>
+                    <th>Dia</th>
+                    <th colspan="5">Horários</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -318,21 +319,62 @@
                       $horario_dados = explode('#', $hora);
                       if (count($horario_dados) < 3){
                           continue;
+                      } 
+                    }
+                  ?>
+                  <?php
+                  foreach($horario_dados as $key => $dado){ 
+                      if ($key['dia'] == 'segunda') { ?>
+                        <tr>
+                          <th>Seg</th>
+                          <td><?php echo $dado[1]; ?></td>
+                        </tr>
+                        <?php
                       }
-                      ?>
-                  <tr style="text-align: center">
-                      <td><?php echo $horario_dados[0]; ?></td>
-                      <td><?php echo $horario_dados[1]; ?></td>
-                      <th scope="row"></th>
-                      <?php if ($horario_dados[2] == 'vazio'){ ?>
-                        <td><a href="#contact" class="" style="width: 100px; height: 40px">Vazio</a></td>
-                      <?php } else{ ?>
-                      <td class="" style="width: 100px; height: 40px">Preenchido</a></td>
-                      <?php } ?>
-                  </tr>
-                  <?php } ?>
-                  </tbody>
-              </table>
+                    }
+                    ?>
+               
+              <tr>
+                <th>Ter</th>
+                <td>Horário 1</td>
+                <td>Horário 2</td>
+                <td>Horário 3</td>
+                <td>Horário 4</td>
+                <td>Horário 5</td>
+            </tr>
+            <tr>
+                <th>Qua</th>
+                <td>Horário 1</td>
+                <td>Horário 2</td>
+                <td>Horário 3</td>
+                <td>Horário 4</td>
+                <td>Horário 5</td>
+            </tr>
+            <tr>
+                <th>Qui</th>
+                <td>Horário 1</td>
+                <td>Horário 2</td>
+                <td>Horário 3</td>
+                <td>Horário 4</td>
+                <td>Horário 5</td>
+            </tr>
+            <tr>
+              <th>Sex</th>
+              <td>Horário 1</td>
+              <td>Horário 2</td>
+              <td>Horário 3</td>
+              <td>Horário 4</td>
+              <td>Horário 5</td>
+            </tr>
+            <tr>
+                <th>Sáb</th>
+                <td>Horário 1</td>
+                <td>Horário 2</td>
+                <td>Horário 3</td>
+                <td>Horário 4</td>
+                <td>Horário 5</td>
+            </tr>
+          </table>
           </div>
 
       </section>

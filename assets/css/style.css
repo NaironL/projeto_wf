@@ -4,6 +4,48 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+/*-------------------------------------------------------------
+# Estilo tabela de Horarios
+--------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+.horarios tr {
+  text-align: center;
+}
+
+.horarios th {
+    width:auto;
+    height:auto;
+    border: none;
+    border-collapse:collapse;
+    text-align: left;
+    padding:15px;
+    background-color: #023e8a;
+    color:#ffff;
+    font-family: 'Montserrat', sans-serif;
+  }
+.horarios td {
+    width:auto;
+    height:auto;
+    border: none;
+    border-collapse:collapse;
+    text-align: left;
+    padding:15px;
+    font-family: 'Montserrat', sans-serif;
+  }
+.horarios table {
+    overflow-x:auto;
+    width:auto;
+    height:auto;
+    border: none;
+    border-collapse:collapse;
+    text-align: left;
+    padding:0px;
+    background-color: rgb(231, 231, 241);
+}
+.horarios tr:nth-child(even) {background-color: #ffff;}
+.horarios td:hover {background-color:#023e8a;color:#ffff;}
+
 
 /*--------------------------------------------------------------
 # General
